@@ -84,9 +84,13 @@ const romanToInteger = (numeral) => {
         C: 100,//special case
         D: 500,
         M: 1000,
-        special: [this.I,this.X,this.C]
+        special: function() {
+            return [this.I,this.X,this.C]
+        }
         
     }
+    //remember to include the () on obj functions or it will return the literal function
+    //console.log(romanNum.special())
 
     //this converts numerals into an array of numerals then swaps them out with their integer counterpart
     const intConvert = [...numeral].map((n) => romanNum[n])
@@ -97,14 +101,18 @@ const romanToInteger = (numeral) => {
     let same = 0;
     let wasSpecial = false;
     //I want to iterate over the numerals and check the numeral after
-    for(let i = 0; i < intConvert.length; i++) {
+    //change it less than or equal to, did it because I felt like it wasn't 
+    //iterating the last pass, so my hunch was just to increase it one more time
+    //it doesn't break, I'm not going to question it. I probably don't get an out
+    //of bounds because I do check for out of bounds somewhere 
+    for(let i = 0; i <= intConvert.length; i++) {
 
         //short curcuit with i > 0
         //same would have to be at least 1 through the first pass
         //but I'm not account for special case
         //maybe I check for that as well
         // was false short curcuit
-        if( (i > 0) && ((!wasSpecial) && (intConvert[i] !== prev)) ) {
+        if( (i > 0) && ((!wasSpecial) && (i === intConvert.length-1 || intConvert[i] !== prev)) ) {
             translation.push(same * prev)
             same = 0;
         }
@@ -120,10 +128,14 @@ const romanToInteger = (numeral) => {
         //so the roman numerals that need to follow are 5x or 10x the special case
         //now is there another way that I can check for these at once? 
         //They are both divisable by 5, so I could check for a modulo
+        //I also need to account for 50
         //instead of checking for both 5 & 10
         //I should short circuit with the length property~
+        
+        //CLXV 100 50
         if(i < intConvert.length && 
-          ((romanNum.special.includes(intConvert[i])) && (intConvert[i+1] % 5 === 0 )) ) {
+          ((romanNum.special().includes(intConvert[i])) && 
+          (intConvert[i+1] % 5 === 0 ) && (intConvert[i+1] % intConvert[i] === 0 )) ) {
             //maybe I want to take this conversion and push it to a new array (line 94)
             //now subtract this with the next entry then I want to add to i 
             //because we want to skip the next entry 
@@ -145,9 +157,13 @@ const romanToInteger = (numeral) => {
             prev = intConvert[i];
             same++
         }
-
-        return translation.join("");
     }
+    //return translation.join(""); //doesn't add them together
+    //console.log(translation)
+    return translation.reduce((prev,curr) => prev+curr);
 }
 
-console.log(romanToInteger("IV"));
+console.log(romanToInteger("XCIV")); //94
+console.log(romanToInteger("CLXV")); //165
+console.log(romanToInteger("CMXLV")); //945
+console.log(romanToInteger("CDXLIV")); //444
