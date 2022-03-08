@@ -140,10 +140,38 @@ const romanToInteger = (numeral) => {
         //instead of checking for both 5 & 10
         //I should short circuit with the length property~
         
-        //CLXV 100 50
+        //oops
+        /**
+         * hmm that actually doesn't seem to work in the case of CCLXXXIII 283
+         * if(i < intConvert.length && 
+          ((romanNum.special().includes(intConvert[i])) && 
+          (intConvert[i+1] % 5 === 0 ) && (intConvert[i+1] % intConvert[i] === 0 )) ) 
+         * maybe I should rework that modulo opertation and somehow increase the check for every 
+         * 0 added on, something like that
+         */
+        //Keep in mind:
+        // I can be placed before V (5) and X (10) to make 4 and 9. 
+        // X can be placed before L (50) and C (100) to make 40 and 90. 
+        // C can be placed before D (500) and M (1000) to make 400 and 900.
+        // I             1
+        // V             5
+        // X             10
+        // L             50
+        // C             100
+        // D             500
+        // M             1000
+        //I may need a switch maybe not, if I can get which special case was taken
+        //can't I just multiply the special case by 5? haha, maybe, let's see
+        // then I can get rid of this statement 
+        //(intConvert[i+1] % intConvert[i]*5 === 0 ) && (begone)---> (intConvert[i+1] % intConvert[i] === 0 )) )
+        //hmmm, still getting 61 for CCLXXXIII 283
+        //lets debug
+        //oh well, there's probably a smarter way of going about this,
+        //but I'll just say they can't be the same number and I'll put that infront for the curcuit
+        //tada it works now
         if(i < intConvert.length && 
           ((romanNum.special().includes(intConvert[i])) && 
-          (intConvert[i+1] % 5 === 0 ) && (intConvert[i+1] % intConvert[i] === 0 )) ) {
+          ((intConvert[i+1] !== intConvert[i]) &&(intConvert[i+1] % intConvert[i]*5 === 0 ))) ) {
             //maybe I want to take this conversion and push it to a new array (line 99)
             //now subtract this with the next entry then I want to add to i 
             //because we want to skip the next entry 
@@ -178,3 +206,4 @@ console.log(romanToInteger("XCIV")); //94
 console.log(romanToInteger("CLXV")); //165
 console.log(romanToInteger("CMXLV")); //945
 console.log(romanToInteger("CDXLIV")); //444
+console.log(romanToInteger("CCLXXXIII")) //283
