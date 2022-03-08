@@ -128,7 +128,15 @@ const romanToInteger = (numeral) => {
         //so the roman numerals that need to follow are 5x or 10x the special case
         //now is there another way that I can check for these at once? 
         //They are both divisable by 5, so I could check for a modulo
-        //I also need to account for 50
+        //However I also need to make sure that something like CL does not occur for special cases
+        //So I will make sure that first statement is true,
+        //and make sure it can be divisable by the proceeding
+        //I say that because I noticed the pattern 
+        /**
+         * for IV, V is divisable by 5 and 5 can be divided by 1
+         * for CD, D is divisable by 5 and 500 can be divided by 100
+         * this stops CL from happening because 50 can not be divided by 100 evenly
+         */
         //instead of checking for both 5 & 10
         //I should short circuit with the length property~
         
@@ -160,6 +168,9 @@ const romanToInteger = (numeral) => {
     }
     //return translation.join(""); //doesn't add them together
     //console.log(translation)
+    //.reduce will return the sum by adding the previous callback with the current
+    //this works because the list now for say CMXLV would be 900 + 45 + 5,
+    // which slots easliy into each other
     return translation.reduce((prev,curr) => prev+curr);
 }
 
