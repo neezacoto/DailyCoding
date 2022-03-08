@@ -121,7 +121,7 @@ const romanToInteger = (numeral) => {
         //however maybe not, maybe I just want to check to see if it's a special case
         //maybe I want to convert the numeral into numbers first within an array?
         //no that'd be complicated, maybe I don't have to do, actually I have to
-        //end up doing addition anyways so, yeah (line 92)
+        //end up doing addition anyways so, yeah (line 97)
 
         //now I can use my specialCase in romanNum
         //but I also want to check if is in fact a special case
