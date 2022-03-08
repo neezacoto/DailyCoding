@@ -1,3 +1,4 @@
+
 //Call:
 //when added on to a function (myFunction.call) when passed an object the function will have
 //access to that object's properties via 'this'

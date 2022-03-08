@@ -202,8 +202,14 @@ const romanToInteger = (numeral) => {
     return translation.reduce((prev,curr) => prev+curr);
 }
 
-console.log(romanToInteger("XCIV")); //94
-console.log(romanToInteger("CLXV")); //165
-console.log(romanToInteger("CMXLV")); //945
-console.log(romanToInteger("CDXLIV")); //444
-console.log(romanToInteger("CCLXXXIII")) //283
+// console.log(romanToInteger("XCIV")); //94
+// console.log(romanToInteger("CLXV")); //165
+// console.log(romanToInteger("CMXLV")); //945
+// console.log(romanToInteger("CDXLIV")); //444
+// console.log(romanToInteger("CCLXXXIII")) //283
+// console.log(romanToInteger("DCCIV")) //704
+
+
+for(const val of process.argv.slice(2)) {
+    console.log(`${val}: ${romanToInteger(val)}`)
+}
