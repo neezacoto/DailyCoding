@@ -144,7 +144,7 @@ const romanToInteger = (numeral) => {
         if(i < intConvert.length && 
           ((romanNum.special().includes(intConvert[i])) && 
           (intConvert[i+1] % 5 === 0 ) && (intConvert[i+1] % intConvert[i] === 0 )) ) {
-            //maybe I want to take this conversion and push it to a new array (line 94)
+            //maybe I want to take this conversion and push it to a new array (line 99)
             //now subtract this with the next entry then I want to add to i 
             //because we want to skip the next entry 
             translation.push(intConvert[i+1]-intConvert[i]);
