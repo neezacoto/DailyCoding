@@ -60,7 +60,8 @@
  * 920
  * would be 
  * CM 9, must be 000, no, it shouldn't check like that, It should just check if the next character
- * is I,X,C then if it follows a subsequent trigger make the subtraction, otherwise add
+ * is I,X,C then if it follows a subsequent trigger (V,X,L,C...)make the subtraction, otherwise add
+//Keep in mind:
 // I can be placed before V (5) and X (10) to make 4 and 9. 
 // X can be placed before L (50) and C (100) to make 40 and 90. 
 // C can be placed before D (500) and M (1000) to make 400 and 900.
@@ -75,7 +76,7 @@
 
 const romanToInteger = (numeral) => {
 
-    //maybe I want to make a translation object
+    //maybe I want to make a translation object to easily get the numbers I want
     let romanNum = {
         I: 1, //special case
         V: 5,
@@ -84,15 +85,15 @@ const romanToInteger = (numeral) => {
         C: 100,//special case
         D: 500,
         M: 1000,
-        special: function() {
+        special: function() { 
             return [this.I,this.X,this.C]
         }
         
     }
-    //remember to include the () on obj functions or it will return the literal function
+    //oops, remember to include the () on obj functions or it will return the literal function
     //console.log(romanNum.special())
 
-    //this converts numerals into an array of numerals then swaps them out with their integer counterpart
+    //this converts numerals into an array then swaps them out with their integer counterpart
     const intConvert = [...numeral].map((n) => romanNum[n])
 
     let translation = [];
@@ -101,17 +102,16 @@ const romanToInteger = (numeral) => {
     let same = 0;
     let wasSpecial = false;
     //I want to iterate over the numerals and check the numeral after
-    //change it less than or equal to, did it because I felt like it wasn't 
-    //iterating the last pass, so my hunch was just to increase it one more time
-    //it doesn't break, I'm not going to question it. I probably don't get an out
-    //of bounds because I do check for out of bounds somewhere 
+    
+    //oops, changing it to less than or equal to, did it because I felt like it wasn't 
+    //iterating the last pass, so my hunch was just allow it one more pass
     for(let i = 0; i <= intConvert.length; i++) {
 
         //short curcuit with i > 0
         //same would have to be at least 1 through the first pass
-        //but I'm not account for special case
+        //but I'm not accounting for special case, let me fix that
+        //(i > 0) && (i === intConvert.length-1) )
         //maybe I check for that as well
-        // was false short curcuit
         if( (i > 0) && ((!wasSpecial) && (i === intConvert.length-1 || intConvert[i] !== prev)) ) {
             translation.push(same * prev)
             same = 0;
