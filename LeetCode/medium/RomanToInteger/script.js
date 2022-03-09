@@ -75,7 +75,6 @@
  */
 
 const romanToInteger = (numeral) => {
-
     //maybe I want to make a translation object to easily get the numbers I want
     let romanNum = {
         I: 1, //special case
@@ -197,7 +196,7 @@ const romanToInteger = (numeral) => {
     //return translation.join(""); //doesn't add them together
     //console.log(translation)
     //.reduce will return the sum by adding the previous callback with the current
-    //this works because the list now for say CMXLV would be 900 + 45 + 5,
+    //this works because the list now for say CMXLV would be 900 + 40 + 5,
     // which slots easliy into each other
     return translation.reduce((prev,curr) => prev+curr);
 }
@@ -209,7 +208,7 @@ const romanToInteger = (numeral) => {
 // console.log(romanToInteger("CCLXXXIII")) //283
 // console.log(romanToInteger("DCCIV")) //704
 
-
 for(const val of process.argv.slice(2)) {
     console.log(`${val}: ${romanToInteger(val)}`)
 }
+

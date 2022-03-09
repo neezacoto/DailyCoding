@@ -1,4 +1,4 @@
-
+'use strict'
 //Call:
 //when added on to a function (myFunction.call) when passed an object the function will have
 //access to that object's properties via 'this'
@@ -63,8 +63,9 @@ let cryptic = function() {
 
 let weirdText = (strings, ...values) => {
 
-    str = "";
+    let str = "";
 
+    
     for(let i = 0; i < strings.raw.length; i++) {
 
         if(i>0){
