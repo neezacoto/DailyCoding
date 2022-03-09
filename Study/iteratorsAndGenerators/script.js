@@ -75,6 +75,7 @@ function* makeRangeIterator(start = 0, end = 100, step = 1) {
 const insultGenerator = {
 
     //setting the words I want
+    //I wonder how I read from csv files
     words:
     [
         [
@@ -96,15 +97,15 @@ const insultGenerator = {
             'bladder'
         ]
     ],
-    //
-    createInsult: () => {
+    //remember to use function and not () => arrow function, because this. will not work!!!
+    createInsult: function() {
         let str = 'thou'
         for(const col of this.words) {
             str += " " + col[Math.floor(Math.random() * col.length)]; // gives me random element from a col
         }
         return str;
     },
-
+    //setting the iterable, which will always be a random list
     [Symbol.iterator]: function* () {
         while(true) {
             const enoughInsults = Math.random() > 0.90;
@@ -114,8 +115,10 @@ const insultGenerator = {
     }
 }
 
+//setting the iterater property
 let insultIterable = insultGenerator[Symbol.iterator]();
 //console.log(insultIterable.next());
+//call next() until it's done
 while(!insultIterable.next().done){
     console.log(insultIterable.next().value);
 }
