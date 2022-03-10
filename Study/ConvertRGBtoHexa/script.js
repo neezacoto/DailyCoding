@@ -27,8 +27,8 @@ const rgbToHex = function(r, g, b) {
         //but I'll still need to check, just doing it for the short curcuit
         // and it can't be negative or not a number
         if( 
-            ((r + g + b > 765) || (r > 255 || g > 255 || b > 255)) || 
-            (r < 0 || g < 0 || b < 0)                             || 
+            (r > 255 || g > 255 || b > 255) || 
+            (r < 0 || g < 0 || b < 0)       || 
             (isNaN(r) || isNaN(g) || isNaN(b)) 
           )
             throw new RGBError()
