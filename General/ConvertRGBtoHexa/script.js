@@ -35,7 +35,8 @@ const rgbToHex = function(r, g, b) {
         //this will be my final output
         const hex = [];
         //I'll put them into an array to iterate over
-        const rgb = [r, g, b];
+        //const rgb = [r, g, b];
+        //instead of doing this I can access the arguments of the perameters directly with 'arguments'
 
         //this is what I want to do to translate the 
         const dict = {
@@ -49,7 +50,8 @@ const rgbToHex = function(r, g, b) {
 
         //now I want to check how many 16s go into that number. Find it,
         //then take that number from the total, and that will be my ones place
-        for(const value of rgb) {
+        //here's that key word arguments, this will allow me to access the functions perameters directly
+        for(const value of arguments) {
             
             let sixteensPlace = Math.floor(value / 16);
             let onesplace = value - sixteensPlace * 16 ;
