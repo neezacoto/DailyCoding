@@ -93,16 +93,30 @@ console.log(numRescueBoats([3,8,4,9,2,2,7,1,6,10,6,7,1,7,7,6,4,4,10,1],10)) //wr
 
 const numRescueBoats2 = (people, limit) => {
 
-    console.log(people);
-    people.sort();
-    console.log(people);
+    //regular sorting doesnt work because regular sort will turn the numbres into UTF-16 characters
+    //meaning that numbers put in will be turned into strings meaing I'd get a weird
+    //sorting result, because of characters coming before eachother like 33 being less than 9
+    //to stop this we explicityl give the sort function
+    // people.sort();
+    // console.log(people);
     people.sort((a, b) => a - b);
-    console.log(people);
+    //console.log(people);
     let boats = 0;
     let i = 0;
     let j = people.length - 1;
 
     while (i <= j) {
+        /**
+         * this works because is it's sorted in ascending order the list doesn't actually need 
+         * to manage anything, just the count. So while looping j is going to represent the back
+         * of the list, and i is going to represent the front. If the black of the list can't
+         * mix with the least number in the list just j-- regardless acting as though the boat 
+         * has been added, and then the boat counter goes up again. The reason why it's i, is becasue
+         * if i (the least number in the array) can't sum with a largest number, then no numbers
+         * larger will be able to, so there's no need to worry about i+n not being accounted for. At
+         * some point i will mix and then the next i will be counted, and as that continues, i and j
+         * will meet eachother in the middle and pass eachothre signifying the end of the loop.
+         */
         boats++;
         if (people[i] + people[j] <= limit) {
         i++;
@@ -113,4 +127,4 @@ const numRescueBoats2 = (people, limit) => {
     return boats;
 }
 
-console.log(numRescueBoats2([44,10,29,12,49,41,23,5,17,26],50))
+console.log(numRescueBoats2([44,10,29,12,49,41,23,5,17,26],50));
