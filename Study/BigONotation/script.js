@@ -87,3 +87,45 @@ for(let j = 0; j < arr.length; j++) {
 
 //this has a space complexity of O(n^2): where n represents the size of 'arr'. 
 //The logic works the same as time complexity, although when doing algorithms you'll be more worried about the time complextity
+
+//more examples of time complexity cheat sheet
+
+//O(1)
+const s = 4 + 3 ;
+
+// O(n)
+for(let i = 0; i < n; i++) {
+
+}
+
+// O(n)
+let a = 0;
+for (let i = 0; i < n; i++) {
+    a+= i;
+}
+
+// O(n^2)
+for (let i = 0; i < n; i++) {
+    for (let j = 0; j < y; j++) {
+
+    }
+}
+
+// O(n)
+for (let i = 0; i < n; i++) {}
+for (let i = 0; i < n; i++) {}
+for (let i = 0; i < n; i++) {}
+//...
+
+// O(log n)
+while (n > 0) {
+    n /= 2;
+}
+
+// O(nlog n)
+for (let i = 0; i < n; i++) {
+    // O(log n)
+    while (x > 0) {
+        x /= 2;
+    }
+}
