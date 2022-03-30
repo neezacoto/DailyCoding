@@ -15,13 +15,19 @@ copy2.pop();
 console.log("copy2: "+ copy2);
 console.log("orig: "+ array);
 
+//shift is mutating
+copy.shift();
+
+console.log("copy: "+copy);
+console.log("orig: "+array);
+
 //map is non mutating
 copy.map((a) => a+1); // non mutating
 
 console.log(copy) 
 console.log("map: "+copy.map((a) => a+1))
 
-//splice is non mutating
+//slice is non mutating
 copy.slice(1,3);//non mutating //also 3 is the index before so 1-3 is non-inclusive of the last index
 //so it's 1-2
 
