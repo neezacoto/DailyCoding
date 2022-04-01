@@ -32,7 +32,7 @@ copy.slice(1,3);//non mutating //also 3 is the index before so 1-3 is non-inclus
 //so it's 1-2
 
 console.log(copy)
-console.log("splice: "+copy.slice(1,3));
+console.log("slice: "+copy.slice(1,2));
 
 const anim = ["cat","dog","bird"];
 
