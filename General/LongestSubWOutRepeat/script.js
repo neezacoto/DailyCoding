@@ -34,8 +34,7 @@ const longestSub = (str) => {
     for(let i = 0; i < str.length - 1; i++) {
         //reset on failure
         if(temp.includes(str[i])) {
-            attempt++;
-            i = attempt;
+            i = attempt++;
             longest.push(temp);
             temp = [];
         }
