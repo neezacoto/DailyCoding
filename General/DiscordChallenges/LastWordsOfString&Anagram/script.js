@@ -58,25 +58,15 @@ const isAnagram2 = (str1, str2) => {
     return isCorrect
 }
 
-//eliana solution
+//longer
 const isAnagram3 = (s, t) => {
     //check to see if they are even the same length
-    if(s.length !== t.length) { return false }
-        
-    let sMap = new Map(); 
-    let tMap = new Map();
-
-    for( let i = 0; i < s.length; i++) {
-        sMap.set(s[i]);
-    }
-
-    for( let i = 0; i < s.length; i++) {
-        tMap.set(t[i]);
-    }
-    console.log(sMap);
-    return sMap === tMap
+    let sArray = s.split('').sort().join('');
+    let tArray = t.split('').sort().join('');
+    return sArray === tArray;
 }
 
 console.log(isAnagram3("hello", "elhlo"));
 
+//you can check 
 console.log("helo" === "heeo")
