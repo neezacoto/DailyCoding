@@ -87,3 +87,24 @@ me = cPerson("Burg");
 //the name is completetly hidden and is stored no where, but the function itself by the power
 //of closures saves a reference to be used in the function
 console.log(me)
+console.log("hi")
+
+me = createPerson2('Sina')
+console.log(me.__proto__)
+console.log(myProto)
+console.log(myProto === me.__proto__)
+
+class Jomba {
+    constructor() {
+        this.name = 'jomba'
+    }
+    talk() {
+        return "jomba juice"
+    }
+}
+
+let nemb = new Jomba
+
+Jomba.prototype.hey = () => "hi"
+
+console.log(Jomba.prototype === nemb.__proto__)

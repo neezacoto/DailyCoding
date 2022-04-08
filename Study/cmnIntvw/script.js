@@ -26,7 +26,8 @@ console.log(isPalin('raceca'));
  */
 
 const fizzBuzz = () => {
-   const obj = {}
+    //I made an object so it doesn't clutter my console
+    const obj = {}
     for(let i = 1; i <= 100; i++) {
         let str = '';
         if(i % 3 === 0 ) {
@@ -46,3 +47,5 @@ const fizzBuzz = () => {
 }
 
 console.log(fizzBuzz())
+
+//interate over object
