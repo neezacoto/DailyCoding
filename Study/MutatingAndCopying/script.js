@@ -39,6 +39,7 @@ const anim = ["cat","dog","bird"];
 console.log(copy)
 
 //splice is mutating and you can insert
+//only works on arrays
 copy.splice(2,1);
 //console.log(copy.splice(2,1)); <- still works
 console.log("after splice: " + copy);
