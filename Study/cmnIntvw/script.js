@@ -1,51 +1,66 @@
-//demonstarting closures
+function solution(prices) {
 
-function multiply(a) {
-    return function (b) {
-        return function (c) {
-            return (a*b) /c
+    //[6, 3, 1, 2, 5, 4]
+    //max 5: i 4
+    //min 1: i 2
+
+
+    //3
+    //100
+    //97
+    //100 - 3
+    
+    //100
+    //1
+    // 1 - 100
+    let buy = 0; // taking
+    let sell = 0; 
+    //0 buy 1 sell
+    let pairs = [];
+    
+    //
+    for(let i = 0; i < prices.length; i++) {
+        for(let j = 0; j < prices.length; j++) {
+            pairs.push( prices[j] - prices[i])
         }
-    }
+        }
+    
+    let arr = [3,56,6]
+    
+    Math.max(arr)
+    
+    /**
+    * [
+         0, -3, -5, -4, -1, -2,  3,  0, -2,
+        -1,  2,  1,  5,  2,  0,  1,  4,  3,
+        4,  1, -1,  0,  3,  2,  1, -2, -4,
+        -3,  0, -1,  2, -1, -3, -2,  1,  0
+        ]
+     */
+    
+    console.log(pairs);
+    console.log( Math.max(...pairs))
+    
+    return Math.max(pairs);
+     
+    //[3, 100, 1, 97]
+    //
+    
+    
+    
+    // for(let i = 0; prices.length; i++) {
+    //     //0
+    //     //6
+    //     if(min > prices[i]){
+    //         min = prices[i]
+    //     }
+        
+    //     if(max < prices[i]){
+    //         max = prices[i]
+    //     }
+    // }
+    // console.log(max)
+    // console.log(min)
 }
-//console.log(multiply(6))
-console.log(multiply(6)(8)(9))
 
-//find palindrome
-const isPalin = (word) => word.split('').reverse().join('') === word;
-
-console.log(isPalin('racecar'));
-console.log(isPalin('raceca'));
-
-//fizzbuzz
-
-/**
- * 1-100
- * logs fizz mul 3
- * logs buzz on mul 5
- * fizzbuzz when both apply
- */
-
-const fizzBuzz = () => {
-    //I made an object so it doesn't clutter my console
-    const obj = {}
-    for(let i = 1; i <= 100; i++) {
-        let str = '';
-        if(i % 3 === 0 ) {
-            str += 'fizz'
-        }
-        if(i % 5 === 0 ) {
-            str += 'buzz'
-        }
-        if(!str) {
-            str = i
-        }
-
-        obj[i] = str;
-    }
-
-    return obj
-}
-
-console.log(fizzBuzz())
-
-//interate over object
+console.log(solution([3, 100, 1, 97]))

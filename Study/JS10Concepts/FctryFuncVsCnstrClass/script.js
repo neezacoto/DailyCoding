@@ -108,3 +108,8 @@ let nemb = new Jomba
 Jomba.prototype.hey = () => "hi"
 
 console.log(Jomba.prototype === nemb.__proto__)
+
+let one = new createPerson("hello");
+console.log(createPerson )
+
+createPerson().prototype

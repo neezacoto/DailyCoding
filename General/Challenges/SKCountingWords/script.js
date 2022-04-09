@@ -63,14 +63,15 @@ function countWords(string) {
 
 }
 console.log(countWords('a string (max length = 10,000,200,000).'));
-let string = "hi";
-let str = string;
-str += "hello"
-console.log(string);
-console.log(str)
+console.log(countWords('"1\n"+ 1\n"g_nw_d_minkowski_p1 1\n")'))
+// let string = "hi";
+// let str = string;
+// str += "hello"
+// console.log(string);
+// console.log(str)
 
-//splice only works on arrays
-// let brug = str.splice(1,2);
+// //splice only works on arrays
+// // let brug = str.splice(1,2);
 
-console.log(str.slice(1,3));
-console.log( 'a' === 'b');
+// console.log(str.slice(1,3));
+// console.log( 'a' === 'b');

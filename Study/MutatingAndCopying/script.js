@@ -47,7 +47,11 @@ console.log("after splice: " + copy);
 copy.splice(2,0,"hello");
 console.log(copy);
 
+let arrr = [5,8,9,76,3,3,1,0,3]
+//filter non mutatitng
+arrr.filter((a)=> a >5 )
 
+console.log(arrr)
 
 
 
