@@ -1,5 +1,11 @@
-function pascelString(n){
-
+function pascal(n){
+/**
+ * The idea here was to create a pascal triangle in an organized object format
+ * the strategy was to first get the two rows out the way, then focus on this pattern
+ * on the first go just add the first digit of the previous array, and then add the current index with the next
+ * then stop the for loop just one before because we are counting two up. Let's also account for the last digit, so 
+ * with the last index also add it right after the the adding has been done.
+ */
     let triList = {}
     for(let i = 0; i < n; i++) {
         if(i === 0) {
@@ -30,5 +36,5 @@ function pascelString(n){
     return triList;
 }
 
-console.log(pascelString(50))
+console.log(pascel(50))
 
