@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script src="../lib/three.js"></script>
+		<script>
+			/**
+			 * Here we create a scene that will house everything
+			 * 
+			 * The camera is added, there are three types of cameras but we'll use perspectiveCamera
+			 * the paramenters are (FOV, aspect ratio, inner clipping plane, outer clipping plane)
+			 * 
+			 * The rendere is set, which will render the scene, this has advantages, because it has fallback
+			 * renderers for older browsers
+			 * we then set the resolution to the size of the browser, if not set correctly it will warp the image
+			 * we can add the false peramater at the end to fake scale the image which will change the resolution
+			 * 
+			 * */
+			const scene = new THREE.Scene();
+			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+			const renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth*2, window.innerHeight*2, false );
+			document.body.appendChild( renderer.domElement );
+
+			const geometry = new THREE.BoxGeometry();
+			const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			const cube = new THREE.Mesh( geometry, material );
+			scene.add( cube );
+
+			camera.position.z = 5;
+
+			function animate() {
+				requestAnimationFrame( animate );
+
+				cube.rotation.x += 0.01;
+				cube.rotation.y += 0.01;
+
+				renderer.render( scene, camera );
+			};
+
+			animate();
+		</script>
+	</body>
+</html>
