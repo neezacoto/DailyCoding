@@ -29,7 +29,6 @@ Example 3:
 
 Input: s = "A", numRows = 1
 Output: "A"
- 
 
 Constraints:
 
@@ -39,25 +38,48 @@ s consists of English letters (lower-case and upper-case), ',' and '.'.
  */
 
 const convertZigZag = (str, rows) => {
-    zigIndex = 0
-    zigCount = 0
-    zigOut = [[]]
+    if(rows < 2)
+    return str;
+    zigIndex = 0 //col index
+    zigCount = 0 //row index inside col
+    printCount = 1; //keeps track of how many counted
+    zigOut = [[]] //array of zigzag output
+    //console.log(rows)
+    //loop over string till all characters are used
     for(let i = 0; i < str.length; i++) {
-        if(i % rows === 0 && i !== 0) {
-            zigCount = 0
-            zigIndex++
-            zigOut[zigIndex] = []
-            zigOut[zigIndex][1] = str[i++];
-
-            zigIndex++
-            zigOut[zigIndex] = []
-        }
+        
+        zigOut[zigIndex][zigCount++] = str[i] //printing is regular col
+        
+        if(printCount % rows === 0) { //if printcount has hit max rows start zig zag
             
-        zigOut[zigIndex][zigCount] = str[i]
-        zigCount++
+            zigCount = rows - 2; //index for zigzag in col
+            for(let j = 0; j < (rows - 1); j++) {
+                //spacing
+                zigIndex++
+                zigOut[zigIndex] = []
+                zigOut[zigIndex][0] = " " 
+                //prints zig
+                zigIndex++
+                zigOut[zigIndex] = []
+                zigOut[zigIndex][zigCount--] = str[i++] //printing in respective row
+                
+            }
+            //reset
+            printCount = 0;
+            zigCount = 0;
+        }
+        printCount++
     }
 
-    return zigOut;
+    //convert to string
+    strConvert = "";
+    for(i = 0; i < rows; i++) {
+        for(j = 0; j < zigOut.length; j++) {
+            strConvert += zigOut[j][i] || " "
+        }
+        strConvert += "\n"
+    }
+    return strConvert;
 }
 // let choop = [];
 // choop[1] = "hi";
@@ -65,4 +87,4 @@ const convertZigZag = (str, rows) => {
 // choop[1][2] = "papi"
 // console.log(choop)
 
-console.log(convertZigZag("PAYPALISHIRING",4));
+console.log(convertZigZag("PAYPAAOEUAOEUAOEUEOAEOUEUOLISHIRING",4));
