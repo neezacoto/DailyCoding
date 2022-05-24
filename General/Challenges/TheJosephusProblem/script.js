@@ -4,6 +4,9 @@
  * People are standing in a circle waiting to be executed. Counting begins 
  * at a specified point in the circle and proceeds around the circle in 
  * a specified direction.
+ * 
+ * Insperation: https://www.youtube.com/watch?v=uCsD3ZGzMgE
+ * I wanted to solve this without a formula
  */
 
 let solveJoeP = (chairs)=> {
@@ -20,7 +23,7 @@ let solveJoeP = (chairs)=> {
         if(people.length === 1)
             return people[0]
         //added because if the end element is removed, n > people.length
-        
+        //and if the one right before the n len -1 is removed then it's the first element
         if(n === people.length) {
             console.log("hello")
             n = 0
