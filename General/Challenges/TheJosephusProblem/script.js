@@ -18,14 +18,14 @@ let solveJoeP = (chairs)=> {
     let n
     for(n = 1; n <= (people.length + 1); n++) {
        
-        console.log(people + " index: " + n + " length: " + people.length)
+        //console.log(people + " index: " + n + " length: " + people.length)
         //last survivor
         if(people.length === 1)
             return people[0]
         //added because if the end element is removed, n > people.length
         //and if the one right before the n len -1 is removed then it's the first element
         if(n === people.length) {
-            console.log("hello")
+            //console.log("hello")
             n = 0
         }else if (n > people.length) {
             n = 1
@@ -35,8 +35,8 @@ let solveJoeP = (chairs)=> {
         people.splice(n, 1)
         
     }
-    console.log(people)
-    console.log("Ended with " + n)
+    // console.log(people)
+    // console.log("Ended with " + n)
     return -1
     //wanted to try something with a linked list sort of pattern, but it quickly 
     //became too complicated
