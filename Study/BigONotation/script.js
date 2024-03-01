@@ -10,7 +10,7 @@ public class oops {
          * Worst
          */
 
-        string[] arr = { "A", "B", "C" }; // When we refer to n, we will be referring to the array's length
+        string[] arr = {}; // When we refer to n, we will be referring to the array's length
 
         // this array contains three numbers, the array will represent n in time
         // complexity, as it grows to the length of the input
@@ -29,7 +29,6 @@ public class oops {
         // n*1
         // O(n)
 
-        int[] arr2 = { 1, 2, 3, 4 };
         for (let j = 0; j < arr2.length; j++) {
             for (let i = 0; i < arr.length; i++) {
                 System.out.println(arr[i]);
@@ -110,6 +109,85 @@ public class oops {
         // operations are just constant so
         // O(1)
         int s = 4 + 3;
+
+
+        //SOOOOOOO trick question :)
+        //ASSUME arr is an array of strings
+        // what's the function and what's the big O???
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                System.out.println(arr[i]);
+            }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i].indexOf("u"));
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                System.out.println(arr[i].contains("bruh"));
+            }
+        }
+
+        //Drum roll
+        //...
+        //..
+        //.
+        //function: (n*n) + (n*n) + (n*n*n)
+        //O(n^3)
+
+        // forloop one, we already know
+        // forloop two, indexOf is also a method in itself, the method is ...
+
+        static int indexOf(char[] source, int sourceOffset, int sourceCount,
+            char[] target, int targetOffset, int targetCount,
+            int fromIndex) {
+        if (fromIndex >= sourceCount) {
+            return (targetCount == 0 ? sourceCount : -1);
+        }
+        if (fromIndex < 0) {
+            fromIndex = 0;
+        }
+        if (targetCount == 0) {
+            return fromIndex;
+        }
+
+        char first = target[targetOffset];
+        int max = sourceOffset + (sourceCount - targetCount);
+
+        for (int i = sourceOffset + fromIndex; i <= max; i++) {
+            /* Look for first character. */
+            if (source[i] != first) {
+                while (++i <= max && source[i] != first);
+            }
+
+            /* Found first character, now look at the rest of v2 */
+            if (i <= max) {
+                int j = i + 1;
+                int end = j + targetCount - 1;
+                for (int k = targetOffset + 1; j < end && source[j] 
+                        == target[k]; j++, k++); 
+
+                if (j == end) {
+                    /* Found whole string. */
+                    return i - sourceOffset;
+                }
+            }
+        }
+        return -1;
+    }
+    // O(m*n) where n and m are the length of the search string and pattern respectively.
+    // though we only really care about the n in this case, so 
+    // O(n)
+    // this method is called from a long list of other indexOf's that end up calling the final above
+    public int indexOf(String str) {
+        return indexOf(str, 0);
+    }
+
+    // and for contains, it's O(n) as well, so that's how we get our answer
+
+    //So the moral of the story, don't blindly use methods, they all have a time complexity
 
     }
 
