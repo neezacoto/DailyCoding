@@ -21,8 +21,17 @@ let search_sum_tests () =
     assert ((search_sum 1 (lst_head test_list_1) (cut_head test_list_1) 7) = 4);
   ]
 
+let two_sum_tests () =
+  [
+    assert ((two_sum test_list_1 7) = [0;4]);
+    assert ((two_sum test_list_1 2) = [1;2]);
+    assert ((two_sum test_list_1 5) = [0;3]);
+    assert ((two_sum test_list_1 4) = [0;1]);
+  ]
+
 let _run_tests : unit list list =
   if not testing then [] else
   [
     run search_sum_tests true;
+    run two_sum_tests true;
   ]

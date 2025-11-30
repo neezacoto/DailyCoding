@@ -30,7 +30,7 @@ Only one valid answer exists.
  
 
 Follow-up: Can you come up with an algorithm that is less than O(n^2) time complexity?
- 
+
 **)
 
 exception EmptyList
@@ -43,8 +43,12 @@ let rec search_sum (k: int) (x: int) (xs: int list) (target: int) : int =
         else search_sum (k + 1) x ys target
       )
 
-let two_sum (arr: int list) (target: int): (int list) =
-
-  match arr with
+let rec confirm_sum (i: int) (lst: int list) target: int list =
+  match lst with 
   | [] -> [-1]
-  | x :: xs -> [search_sum 1 x xs target]
+  | x :: xs -> let res = search_sum (i + 1) x xs target in
+               if res != -1 then [i; res]
+               else confirm_sum (i + 1) xs target
+
+let two_sum (arr: int list) (target: int): (int list) =
+  confirm_sum 0 arr target
