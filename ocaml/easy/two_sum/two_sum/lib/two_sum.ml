@@ -35,16 +35,16 @@ Follow-up: Can you come up with an algorithm that is less than O(n^2) time compl
 
 exception EmptyList
 
-let two_sum (arr: int list) (target: int): (int list) =
-
-  let rec search_sum (k: int) (x: int) (xs: int list) : int =
+let rec search_sum (k: int) (x: int) (xs: int list) (target: int) : int =
     match xs with 
     | [] -> -1
     | y :: ys -> (
         if x + y = target then k 
-        else search_sum (k + 1) x ys
+        else search_sum (k + 1) x ys target
       )
-  in
+
+let two_sum (arr: int list) (target: int): (int list) =
+
   match arr with
   | [] -> [-1]
-  | x :: xs -> [search_sum 1 x xs]
+  | x :: xs -> [search_sum 1 x xs target]
