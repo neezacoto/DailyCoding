@@ -1,0 +1,4 @@
+(executable
+ (public_name climbing_stairs)
+ (name main)
+ (libraries climbing_stairs))

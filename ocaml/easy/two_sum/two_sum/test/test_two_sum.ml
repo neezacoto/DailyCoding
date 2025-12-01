@@ -35,3 +35,9 @@ let _run_tests : unit list list =
     run search_sum_tests true;
     run two_sum_tests true;
   ]
+
+(*
+Context: We are all one, just separate instances of the same source. To hurt someone, is to hurt oneself.
+When people are cruel, they hurt themselves. Kindness bears miracles for others, the life that is oneself.
+To be kind is hard, to be cruel, less so. Let us endeavor so that ourselves shall prosper. We are all but one.
+*)
